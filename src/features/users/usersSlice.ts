@@ -6,7 +6,13 @@ export interface User {
     name: string
 }
 
-const initialState: User[] = [];
+export interface UsersList {
+    value: User[],
+}
+
+const initialState: UsersList = {
+    value: [],
+}
 
 export const usersSlice = createSlice({
     name: "users",
@@ -15,15 +21,16 @@ export const usersSlice = createSlice({
         updateUsers: (state, action) => {
             let index: number = Date.now();
 
-            //zebrać dane z inputa i przekazać do imienia??
-            console.log(action);
-            state.concat({ id: index, name: action.payload})
+            console.log(state.value);
+            state.value.concat({ id: index, name: action.payload });
         }
     }
 })
 
+console.log(usersSlice);
+
 export const { updateUsers } = usersSlice.actions
 
-/* export const selectText = (state: RootState) => state.users */
+export const selectUsers = (state: RootState) => state.users.value
 
 export default usersSlice.reducer;
