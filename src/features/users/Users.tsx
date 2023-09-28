@@ -15,7 +15,7 @@ export function Users(): JSX.Element {
     return (
         <div className={styles.users}>
             <h1>Users' List</h1>
-            <input ref={(data) => { inputRef = data }} type="text" placeholder='Enter name' />
+            <input ref={(data) => { inputRef = data }} type="text" placeholder="Enter name" />
 
             <button onClick={() => {
                 if (inputRef) {

@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit"
 import { RootState } from "../../app/store"
 
 export interface User {
@@ -24,16 +24,10 @@ export const usersSlice = createSlice({
         },
         removeUser: (state, action) => {
             let userID: number = Number(action.payload);
-            console.log(userID);
-    
             state.value = state.value.filter(user => user.id !== userID);
-    
         }
-    
     }
 })
-
-//console.log(usersSlice);
 
 export const { updateUsers, removeUser } = usersSlice.actions
 
