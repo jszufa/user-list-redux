@@ -20,16 +20,22 @@ export const usersSlice = createSlice({
     reducers: {
         updateUsers: (state, action) => {
             let index: number = Date.now();
-
-            console.log(state.value);
-            state.value.concat({ id: index, name: action.payload });
+            state.value = state.value.concat({ id: index, name: action.payload });
+        },
+        removeUser: (state, action) => {
+            let userID: number = Number(action.payload);
+            console.log(userID);
+    
+            state.value = state.value.filter(user => user.id !== userID);
+    
         }
+    
     }
 })
 
-console.log(usersSlice);
+//console.log(usersSlice);
 
-export const { updateUsers } = usersSlice.actions
+export const { updateUsers, removeUser } = usersSlice.actions
 
 export const selectUsers = (state: RootState) => state.users.value
 

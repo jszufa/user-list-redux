@@ -1,4 +1,4 @@
-import "./Users.module.css"
+import styles from "./Users.module.css";
 import { UsersList } from "./UsersList"
 import { useAppSelector, useAppDispatch } from "../../app/hooks"
 import { updateUsers } from "./usersSlice"
@@ -12,12 +12,9 @@ export function Users(): JSX.Element {
 
     let inputRef: HTMLInputElement | null
 
-    console.log(users);
-
     return (
-        <div className='users'>
+        <div className={styles.users}>
             <h1>Users' List</h1>
-            <p>{JSON.stringify(users)}</p>
             <input ref={(data) => { inputRef = data }} type="text" placeholder='Enter name' />
 
             <button onClick={() => {

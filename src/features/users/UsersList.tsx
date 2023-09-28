@@ -1,15 +1,14 @@
-import "./Users.module.css"
+import "./UsersList.module.css"
 import { useAppSelector, useAppDispatch } from "../../app/hooks"
-import { updateUsers } from "./usersSlice"
-
-import { selectUsers } from "./usersSlice"
+import { selectUsers, removeUser } from "./usersSlice"
 
 export function UsersList(): JSX.Element {
 
     const usersArray = useAppSelector(selectUsers);
-    console.log (usersArray);
+    const dispatch = useAppDispatch();
+
     let usersArrayElements = usersArray.map((user) => {
-        return <li key={user.id}>{user.name}</li>
+        return <li key={user.id} onClick={() => {dispatch(removeUser(user.id))}}>{user.name}</li>
     });
 
 
